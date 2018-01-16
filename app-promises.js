@@ -3,7 +3,7 @@ const axios = require('axios');
 const argv = yargs
     .options({
         a: {
-            demand: true,
+            
             alias: 'address',
             describe: 'Address to search for',
             string: true
@@ -14,6 +14,9 @@ const argv = yargs
     .argv;
 
 var address = argv.address;
+if(address === undefined){
+    address = "2275 Credit Valley Road, Mississauga, L5M 4N5";
+}
 var geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`;
 
 axios.get(geocodeUrl)
